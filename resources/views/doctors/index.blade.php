@@ -9,7 +9,7 @@
                 </div>
                 <div class="col text-right">
                     <a href="{{ url('medicos/create') }}" class="btn btn-sm btn-primary">Nuevo medico</a>
-                </div>
+                </div> 
             </div>
         </div>
         <div class="card-body">
@@ -26,7 +26,7 @@
                     <tr>
                         <th scope="col">Nombre</th>
                         <th scope="col">Correo</th>
-                        <th scope="col">Cedula</th>
+                        <th scope="col">Cédula</th>
                         <th scope="col">Opciones</th>
                     </tr>
                 </thead>
