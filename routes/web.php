@@ -22,3 +22,7 @@ Route::delete('/especialidades/{specialty}', [App\Http\Controllers\SpecialtyCont
 // Rutas medicas
 
 Route::resource('medicos', 'App\Http\Controllers\DoctorController');
+
+// Ruta Pacientes
+
+Route::resource('pacientes', 'App\Http\Controllers\PatientController');
