@@ -18,3 +18,7 @@ Route::post('/especialidades', [App\Http\Controllers\SpecialtyController::class,
 
 Route::put('/especialidades/{specialty}', [App\Http\Controllers\SpecialtyController::class, 'update']);//actualizar especialdiades
 Route::delete('/especialidades/{specialty}', [App\Http\Controllers\SpecialtyController::class, 'destroy']);//actualizar especialdiades
+
+// Rutas medicas
+
+Route::resource('medicos', 'App\Http\Controllers\DoctorController');
