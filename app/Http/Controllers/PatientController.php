@@ -28,7 +28,43 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        {
+            $rules =[
+                'name'=> 'required|min:3',
+                'email'=> 'required|email',
+                'cedula' => 'required|digits:10',
+                'address' => 'nullable|min:6',
+                'phone' => 'required',
+            ];
+    
+            $messages =[
+                'name.required' =>'El nombre del paciente es obligatorio uwu',
+                'name.min' =>'El nombre del paciente debe tener 3 caracteres',
+                'email.required'=> 'El correo electronico es obligatorio',
+                'email.email'=> 'Ingresa un correo electronico que sea valido',
+                'cedula.required'=>'La cedula es obligatoria',
+                'cedula.digits'=> 'La cedula debe tener 9 digitos porque estamos en Perú xd',
+                'address.min'=>'La direccion debe tener al menos 8 caracteres',
+                'phone.required'=>'El número de telefono es obligatorio',
+    
+            ];
+    
+            $this->validate($request, $rules, $messages);
+    
+            User::create(
+                $request->only('name','email','cedula','address','phone')
+                +[
+                    'role' => 'paciente',
+                    'password' => bcrypt($request->input('password'))
+                ]
+            );
+    
+            $notification='El paciente se registró con éxito';
+            return redirect('/pacientes') -> with(compact('notification'));
+    
+    
+        }
+    
     }
 
     /**
