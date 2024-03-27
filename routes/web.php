@@ -16,7 +16,6 @@ Route::get('/especialidades', [App\Http\Controllers\admin\SpecialtyController::c
 Route::get('/especialidades/create', [App\Http\Controllers\admin\SpecialtyController::class, 'create']);//Crear especialdiades
 Route::get('/especialidades/{specialty}/edit', [App\Http\Controllers\admin\SpecialtyController::class, 'edit']);//Editar especialdiades
 Route::post('/especialidades', [App\Http\Controllers\admin\SpecialtyController::class, 'sendData']);//enviar especialdiades
-
 Route::put('/especialidades/{specialty}', [App\Http\Controllers\admin\SpecialtyController::class, 'update']);//actualizar especialdiades
 Route::delete('/especialidades/{specialty}', [App\Http\Controllers\admin\SpecialtyController::class, 'destroy']);//actualizar especialdiades
 
@@ -25,7 +24,9 @@ Route::delete('/especialidades/{specialty}', [App\Http\Controllers\admin\Special
 Route::resource('medicos', 'App\Http\Controllers\admin\DoctorController');
 
 // Ruta Pacientes
-
 Route::resource('pacientes', 'App\Http\Controllers\admin\PatientController');
 });
 
+Route::middleware(['auth','doctor'])->group(function(){
+    Route::get('/horario', [App\Http\Controllers\doctor\HorarioController::class, 'edit']);//Listado de especialdiades
+});
